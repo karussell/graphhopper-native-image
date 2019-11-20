@@ -17,6 +17,13 @@ If you are finished and you noticed something is eating your resources do:
 
 Currently you need a small patch to apply to GraphHopper: https://gist.github.com/karussell/84d29b3254a6c92a8122c5737ebdc2c8
 
+# Unscientific Results
+
+Measured via command line utility `time` and picked the "real" time
+
+ * OpenJDK: 0.5s
+ * native image: <0.05s
+
 # How to make resources of dependencies working?
 
 This seem to work via config or command line: https://github.com/oracle/graal/blob/master/substratevm/RESOURCES.md
