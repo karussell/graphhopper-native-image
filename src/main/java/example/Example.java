@@ -24,6 +24,7 @@ public class Example {
         System.out.println("Hello world");
         GraphHopper graphhopper = new GraphHopperOSM(tr, null).
                 setOSMFile(osmFile).
+                setMemoryMapped().
                 setEncodingManager(EncodingManager.create(new CarFlagEncoder())).
                 setGraphHopperLocation("graph-cache").
                 importOrLoad();
