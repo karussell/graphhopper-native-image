@@ -7,3 +7,7 @@
  * try `$JAVA_HOME/bin/native-image --help`
  * `mvn package # worked for a simple example!`
  * run `./target/example`
+
+# Resources
+ 
+ * https://github.com/graalvm/graalvm-demos
