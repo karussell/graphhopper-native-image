@@ -14,7 +14,9 @@
         <dependency>
             <groupId>com.graphhopper</groupId>
             <artifactId>graphhopper-reader-osm</artifactId>
-            <version>1.0-pre7</version>
+            <version>1.0-SNAPSHOT</version>
+            <!-- <version>1.0-pre7</version> -->
+            <!-- I wasn't able to load the de_DE.txt files from the dependencies so load it here but this requires a minor change -->
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -73,8 +75,12 @@
                 <configuration>
                     <skip>false</skip>
                     <imageName>example</imageName>
+                    <!--
+                    This seems to work only for current project not for dependencies?
+                     -H:Log=registerResource: -H:IncludeResources='.*/*.txt$'
+                    -->
                     <buildArgs>
-                        --no-fallback
+                        --no-fallback --initialize-at-build-time=com.graphhopper.util.TranslationMap,example.Example -H:+TraceClassInitialization
                     </buildArgs>
                 </configuration>
             </plugin>
