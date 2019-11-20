@@ -9,21 +9,23 @@
  * wget http://download.geofabrik.de/europe/germany/berlin-latest.osm.pbf -O osm.pbf
  * `./target/example`
 
+If you are finished and you noticed something is eating your resources do:
+
+`$JAVA_HOME/bin/native-image --server-shutdown`
+
 # Requirements
 
 Currently you need a small patch to apply to GraphHopper: https://gist.github.com/karussell/84d29b3254a6c92a8122c5737ebdc2c8
 
-# Include resources
+# How to make resources of dependencies working?
 
 This seem to work via config or command line: https://github.com/oracle/graal/blob/master/substratevm/RESOURCES.md
 
 But only for the project its files. Not for resources of one of the dependencies!?
 
-# Questions
+# Why slf4j-log4j bridge fails with ClassNotFound
 
- * How to make resources of dependencies working? See Resources secton
- * When do we need `$JAVA_HOME/bin/native-image --server-shutdown` ?
- * Why slf4j-log4j bridge fails with ClassNotFound
+TODO: currently we just use slf4j-simple
 
 # Graal Help
  
