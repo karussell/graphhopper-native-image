@@ -1,4 +1,6 @@
 myniexample.iml
 target/
 .idea/
+graph-cache/
+*.pbf
 *~
