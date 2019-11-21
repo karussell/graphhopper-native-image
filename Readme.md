@@ -34,7 +34,7 @@ Measured via command line utility `time` and picked the "real" time
  
 # Future Tasks
 
- * try --shared or and --static options of `native-image` and include in a cpp application!
+ * try --static options of `native-image` (see `--shared`)
  * target iOS
  * target Android
 
