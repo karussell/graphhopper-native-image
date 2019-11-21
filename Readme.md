@@ -30,6 +30,12 @@ Measured via command line utility `time` and picked the "real" time
 
  * OpenJDK: 0.5s
  * native image: <0.05s
+ 
+# Future Tasks
+
+ * try --shared or and --static options of `native-image` and include in a cpp application!
+ * target iOS
+ * target Android
 
 # How to make resources of dependencies working?
 
