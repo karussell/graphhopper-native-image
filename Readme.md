@@ -30,6 +30,7 @@ Measured via command line utility `time` and picked the "real" time
 
  * OpenJDK: 0.5s
  * native image: <0.05s
+ * shared library: ~0.025s
  
 # Future Tasks
 
