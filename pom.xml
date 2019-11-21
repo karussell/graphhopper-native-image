@@ -6,7 +6,7 @@
 
     <groupId>com.graphhopper.ni</groupId>
     <artifactId>my-ni-example</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0-pre7</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
