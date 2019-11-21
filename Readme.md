@@ -74,6 +74,9 @@ Now you should see libgraphhopper.so, libgraphhopper.h, graal_isolate.h in the
 ```
 g++ example.cpp -I ./target -L ./target -lgraphhopper -o target/example
 export LD_LIBRARY_PATH=./target:$LD_LIBRARY_PATH && ./target/example 52.5147 13.3
+[main] INFO com.graphhopper.reader.osm.GraphHopperOSM - version 1.0|2019-11-20T22:11:41Z (5,15,4,3,5,5)
+[main] INFO com.graphhopper.reader.osm.GraphHopperOSM - graph CH|car|MMAP_STORE|2D|no_turn_cost|5,15,4,3,5, details:edges:126,973(4MB), ...
+Distance 6806.26
 ``
 
 # Graal Help
