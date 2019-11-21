@@ -3,4 +3,5 @@ target/
 .idea/
 graph-cache/
 *.pbf
+a.out
 *~

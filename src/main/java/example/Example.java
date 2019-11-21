@@ -7,29 +7,40 @@ import com.graphhopper.PathWrapper;
 import com.graphhopper.reader.osm.GraphHopperOSM;
 import com.graphhopper.routing.util.CarFlagEncoder;
 import com.graphhopper.routing.util.EncodingManager;
-import com.graphhopper.util.Helper;
 import com.graphhopper.util.StopWatch;
 import com.graphhopper.util.shapes.GHPoint;
+import org.graalvm.nativeimage.IsolateThread;
+import org.graalvm.nativeimage.c.function.CEntryPoint;
 
 public class Example {
     public static void main(String[] args) {
-        StopWatch sw = new StopWatch().start();
-        String osmFile = (args.length == 0 || Helper.isEmpty(args[0])) ? "osm.pbf" : args[0];
-
         System.out.println("Hello world");
+        // String osmFile = (args.length == 0 || Helper.isEmpty(args[0])) ? "osm.pbf" : args[0];
+        StopWatch sw = new StopWatch().start();
+        double dist = internalRun(52.5169, 13.3884, 52.5147, 13.3883);
+        System.out.println("distance: " + dist);
+        System.out.println("time since main method started: " + sw.stop().getSeconds());
+    }
+
+    @CEntryPoint(name = "runGH")
+    public static double runGH(IsolateThread thread, double lat1, double lon1, double lat2, double lon2) {
+        return internalRun(lat1, lon1, lat2, lon2);
+    }
+
+    public static double internalRun(double lat1, double lon1, double lat2, double lon2) {
         GraphHopper graphhopper = new GraphHopperOSM().
-                setOSMFile(osmFile).
+                setOSMFile("osm.pbf").
                 setMemoryMapped().
                 setEncodingManager(EncodingManager.create(new CarFlagEncoder())).
                 setGraphHopperLocation("graph-cache").
                 importOrLoad();
-        GHResponse res = graphhopper.route(new GHRequest(new GHPoint(52.5169, 13.3884), new GHPoint(52.5147, 13.3883)));
+        GHResponse res = graphhopper.route(new GHRequest(new GHPoint(lat1, lon1), new GHPoint(lat2, lon2)));
         PathWrapper pw = res.getBest();
         if (pw.hasErrors()) {
             System.out.println("route has errors " + pw.getErrors());
+            return -1;
         } else {
-            System.out.println("distance: " + pw.getDistance());
-            System.out.println("time since main method started: " + sw.stop().getSeconds());
+            return pw.getDistance();
         }
     }
 }

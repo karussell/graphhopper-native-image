@@ -53,10 +53,28 @@ https://github.com/oracle/graal/blob/master/substratevm/CONFIGURE.md
 
 https://github.com/oracle/graal/blob/master/substratevm/RESOURCES.md
 
-# slf4j-log4j bridge fails with ClassNotFound
+# Open Questions
 
-Currently we just use slf4j-simple. Likely this is fixed via the resources
-config in previous section or maybe this: https://github.com/oracle/graal/issues/653
+ * slf4j-log4j bridge fails with ClassNotFound. Workaround: use slf4j-simple. Likely this is fixed via the resources config in previous section or maybe
+   [this](https://github.com/oracle/graal/issues/653)
+ * Why are they e.g. libgraphhopper_dynamic.h headers and how can I use 
+   `--static` as then no headers are created?
+
+# Call GraphHopper from C++
+
+Instead of a native application we now want a library that is called from
+native code like example.cpp. To create this library do the following:
+
+ * use `<imageName>libgraphhopper</imageName>` and add `--shared` in `<buildArgs>` in pom.xml
+ * `mvn clean package`
+
+Now you should see libgraphhopper.so, libgraphhopper.h, graal_isolate.h in the
+./target folder. Proceed with:
+
+```
+g++ example.cpp -I ./target -L ./target -lgraphhopper -o target/example
+export LD_LIBRARY_PATH=./target:$LD_LIBRARY_PATH && ./target/example 52.5147 13.3
+``
 
 # Graal Help
  
