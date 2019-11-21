@@ -5,17 +5,13 @@
  * native-image needs a local C toolchain: glibc-devel, zlib-devel and gcc - e.g.`sudo apt-get install zlib1g-dev`
  * set JAVA_HOME to the downloaded graal (`graalvm/`)
  * try `$JAVA_HOME/bin/native-image --help`
- * `mvn package`
- * wget http://download.geofabrik.de/europe/germany/berlin-latest.osm.pbf -O osm.pbf
- * `./target/example`
+ * `mvn clean package`
+ * `wget http://download.geofabrik.de/europe/germany/berlin-latest.osm.pbf -O osm.pbf`
+ * `./target/graphhopper`
 
-If you are finished and you noticed something is eating your resources do:
+If you are finished and you noticed something is eating your CPU resources do:
 
 `$JAVA_HOME/bin/native-image --server-shutdown`
-
-# Requirements
-
-Currently you need a small patch to apply to GraphHopper: https://gist.github.com/karussell/84d29b3254a6c92a8122c5737ebdc2c8
 
 # Unscientific Results
 
@@ -26,16 +22,26 @@ Measured via command line utility `time` and picked the "real" time
 
 # How to make resources of dependencies working?
 
-This seem to work via config or command line: https://github.com/oracle/graal/blob/master/substratevm/RESOURCES.md
+Run application with GraalVM and special agent:
 
-But only for the project its files. Not for resources of one of the dependencies!?
+```
+$JAVA_HOME/bin/java -agentlib:native-image-agent=config-output-dir=./ni-configs -jar target/*-jar-with-dependencies.jar
+```
 
-# Why slf4j-log4j bridge fails with ClassNotFound
+Then include these files in native-image command line: see maven plugin.
 
-TODO: currently we just use slf4j-simple
+See also:
+
+https://github.com/oracle/graal/blob/master/substratevm/CONFIGURE.md
+
+https://github.com/oracle/graal/blob/master/substratevm/RESOURCES.md
+
+# slf4j-log4j bridge fails with ClassNotFound
+
+Currently we just use slf4j-simple. Likely this is fixed via the resources
+config in previous section or maybe this: https://github.com/oracle/graal/issues/653
 
 # Graal Help
  
  * https://www.graalvm.org/community/
  * https://github.com/graalvm/graalvm-demos
- * Automatically create the configuration via java agent https://github.com/oracle/graal/blob/master/substratevm/CONFIGURE.md

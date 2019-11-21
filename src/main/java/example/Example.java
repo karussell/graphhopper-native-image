@@ -9,20 +9,15 @@ import com.graphhopper.routing.util.CarFlagEncoder;
 import com.graphhopper.routing.util.EncodingManager;
 import com.graphhopper.util.Helper;
 import com.graphhopper.util.StopWatch;
-import com.graphhopper.util.TranslationMap;
 import com.graphhopper.util.shapes.GHPoint;
-
-import java.io.File;
 
 public class Example {
     public static void main(String[] args) {
         StopWatch sw = new StopWatch().start();
         String osmFile = (args.length == 0 || Helper.isEmpty(args[0])) ? "osm.pbf" : args[0];
 
-        TranslationMap tr = new TranslationMap().doImport(new File("./i18n"));
-
         System.out.println("Hello world");
-        GraphHopper graphhopper = new GraphHopperOSM(tr, null).
+        GraphHopper graphhopper = new GraphHopperOSM().
                 setOSMFile(osmFile).
                 setMemoryMapped().
                 setEncodingManager(EncodingManager.create(new CarFlagEncoder())).

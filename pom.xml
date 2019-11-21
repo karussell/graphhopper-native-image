@@ -74,13 +74,9 @@
                 </executions>
                 <configuration>
                     <skip>false</skip>
-                    <imageName>example</imageName>
-                    <!--
-                    This seems to work only for current project not for dependencies?
-                     -H:Log=registerResource: -H:IncludeResources='.*/*.txt$'
-                    -->
+                    <imageName>graphhopper</imageName>
                     <buildArgs>
-                        --no-fallback --initialize-at-build-time=com.graphhopper.util.TranslationMap,example.Example -H:+TraceClassInitialization
+                        --no-fallback -H:ConfigurationFileDirectories=${project.basedir}/ni-configs
                     </buildArgs>
                 </configuration>
             </plugin>
