@@ -103,3 +103,4 @@ Distance 6806.26
  * https://www.graalvm.org/community/
  * https://github.com/graalvm/graalvm-demos
  * https://github.com/neomatrix369/awesome-graal
+ * [travis example config for GraalVM](https://github.com/gleb-kosteiko/latepost-scheduler/blob/master/.travis.yml)
