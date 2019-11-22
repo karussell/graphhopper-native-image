@@ -53,7 +53,8 @@ Measured via command line utility `time` and picked the "real" time
  * try `--static` options of `native-image` (see `--shared`)
  * target iOS
  * target Android
-
+ * we could try to start the dropwizard web service as native image and compare e.g. performance
+ 
 # How to make resources of dependencies working?
 
 Run application with GraalVM and special agent:
