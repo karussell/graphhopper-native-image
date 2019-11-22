@@ -102,3 +102,4 @@ Distance 6806.26
  * installing the native-image plugin fails? Download the jar, then do `bin/gu -L install ~/Downloads/native-image-installable-svm-java11-linux-amd64-19.3.0.jar`
  * https://www.graalvm.org/community/
  * https://github.com/graalvm/graalvm-demos
+ * https://github.com/neomatrix369/awesome-graal
