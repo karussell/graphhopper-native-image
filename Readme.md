@@ -7,6 +7,11 @@ It runs on Android and iOS, i.e. it calculates the routes on the device without 
  * GraphHopper [mostly already works on Android](https://github.com/graphhopper/graphhopper/tree/master/android) but Android does not support the latest Java. Even Java 8 is not really well supported. This forces us to stay on old dependencies for our `core` module and also on Java7 features. Android additionally limits the area one process can mmap. This is ugly because it is an arbitrary limit at ~1.5GB hardcoded in the sources although the devices usually have more and there is no such limit for native applications.
  * There is an [iOS port](https://github.com/graphhopper/graphhopper-ios/) but maintaining this port is not trivial. And so this port is not up-to-date.
 
+# Solutions
+
+ * Rewrite in Kotlin that can target iOS and Android and even JavaScript. But this is a huge work and on Android one needs an additional Kotlin dependency.
+ * GraalVM looks promising and could help us to develop a native library that could be included on iOS and Android.
+
 # Create Native Image for GraphHopper
 
  * [download graalvm](https://github.com/graalvm/graalvm-ce-builds/releases/)
