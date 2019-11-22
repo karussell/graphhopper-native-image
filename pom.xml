@@ -78,9 +78,9 @@
                 </executions>
                 <configuration>
                     <skip>false</skip>
-                    <imageName>libgraphhopper</imageName>
+                    <imageName>graphhopper</imageName>
                     <buildArgs>
-                        --shared --no-fallback -H:ConfigurationFileDirectories=${project.basedir}/ni-configs
+                        --no-fallback -H:ConfigurationFileDirectories=${project.basedir}/ni-configs
                     </buildArgs>
                 </configuration>
             </plugin>
