@@ -10,7 +10,9 @@ It runs on Android and iOS, i.e. it calculates the routes on the device without 
 # Solutions
 
  * Rewrite in Kotlin that can target iOS and Android and even JavaScript. But this is a huge work and on Android one needs an additional Kotlin dependency.
- * GraalVM looks promising and could help us to develop a native library that could be included on iOS and Android.
+ * GraalVM looks promising and could help us to develop a native library that could be included on iOS and Android. 
+ 
+And this repository is about the GraalVM option. Or at least to get a native library working for now on currently supported platforms like Linux.
 
 # Create Native Image for GraphHopper
 
