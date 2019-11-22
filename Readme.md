@@ -1,6 +1,6 @@
 # Description
 
-GraphHopper is a fast and memory efficient Java routing engine, released under Apache License 2.0. By default it uses OpenStreetMap and GTFS data, but it can import other data sources.
+[GraphHopper](https://github.com/graphhopper/graphhopper) is a fast and memory efficient Java routing engine, released under Apache License 2.0. By default it uses OpenStreetMap and GTFS data, but it can import other data sources.
 
 It runs on Android and iOS, i.e. it calculates the routes on the device without internet access. But there are a couple of problems with each approach:
 
