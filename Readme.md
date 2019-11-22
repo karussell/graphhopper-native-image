@@ -5,7 +5,7 @@ GraphHopper is a fast and memory efficient Java routing engine, released under A
 It runs on Android and iOS, i.e. it calculates the routes on the device without internet access. But there are a couple of problems with each approach:
 
  * GraphHopper [mostly already works on Android](https://github.com/graphhopper/graphhopper/tree/master/android) but Android does not support the latest Java. Even Java 8 is not really well supported. This forces us to stay on old dependencies for our `core` module and also on Java7 features. Android additionally limits the area one process can mmap. This is ugly because it is an arbitrary limit at ~1.5GB hardcoded in the sources although the devices usually have more and there is no such limit for native applications.
- * There is an [iOS port](https://github.com/graphhopper/graphhopper-ios/) but maintaining this port is not trivial.
+ * There is an [iOS port](https://github.com/graphhopper/graphhopper-ios/) but maintaining this port is not trivial. And so this port is not up-to-date.
 
 # Create Native Image for GraphHopper
 
