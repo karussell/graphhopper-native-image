@@ -1,6 +1,5 @@
 #include <iostream>
 #include "libgraphhopper.h"
-#include "graal_isolate.h"
 
 using namespace std;
 
