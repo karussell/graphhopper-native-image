@@ -104,3 +104,4 @@ Distance 6806.26
  * https://github.com/graalvm/graalvm-demos
  * https://github.com/neomatrix369/awesome-graal
  * [travis example config for GraalVM](https://github.com/gleb-kosteiko/latepost-scheduler/blob/master/.travis.yml)
+ * Java distribution of native C++ libraries https://github.com/bytedeco/javacpp-presets
