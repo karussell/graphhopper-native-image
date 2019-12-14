@@ -50,7 +50,7 @@ Measured via command line utility `time` and picked the "real" time
  
 # Future Tasks
 
- * target iOS, see target=iOS here: https://github.com/gluonhq/client-samples
+ * target iOS, see target=iOS here: https://github.com/gluonhq/client-samples and https://github.com/gluonhq/substrate/issues/47
  * target Android, see https://github.com/gluonhq/client-samples/issues/35
  * we could try to start the dropwizard web service as native image and compare e.g. performance
  
