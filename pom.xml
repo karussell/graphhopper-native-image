@@ -71,23 +71,14 @@
             </plugin>
 
             <plugin>
-                <groupId>org.graalvm.nativeimage</groupId>
-                <artifactId>native-image-maven-plugin</artifactId>
-                <version>20.0.0</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>native-image</goal>
-                        </goals>
-                        <phase>package</phase>
-                    </execution>
-                </executions>
+                <groupId>com.gluonhq</groupId>
+                <artifactId>client-maven-plugin</artifactId>
+                <version>0.1.17-SNAPSHOT</version>
                 <configuration>
-                    <skip>false</skip>
-                    <imageName>graphhopper</imageName>
-                    <buildArgs>
-                        --no-fallback -H:ConfigurationFileDirectories=${project.basedir}/ni-configs
-                    </buildArgs>
+<verbose>true</verbose>
+                    <!-- Uncomment to run on iOS: -->
+                    <!-- <target>ios</target>-->
+                    <mainClass>example.Example</mainClass>
                 </configuration>
             </plugin>
         </plugins>
