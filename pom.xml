@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.graphhopper.ni</groupId>
-    <artifactId>my-ni-example</artifactId>
+    <artifactId>myniexample</artifactId>
     <version>1.0-SNAPSHOT</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -75,9 +75,12 @@
                 <artifactId>client-maven-plugin</artifactId>
                 <version>0.1.17-SNAPSHOT</version>
                 <configuration>
-<verbose>true</verbose>
+                    <resourcesList>
+                        <item>.*\\.txt$</item>
+                    </resourcesList>
                     <!-- Uncomment to run on iOS: -->
-                    <!-- <target>ios</target>-->
+                    <verbose>false</verbose>
+                    <target>android</target>
                     <mainClass>example.Example</mainClass>
                 </configuration>
             </plugin>
