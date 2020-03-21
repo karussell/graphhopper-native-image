@@ -73,18 +73,24 @@
             <plugin>
                 <groupId>com.gluonhq</groupId>
                 <artifactId>client-maven-plugin</artifactId>
-                <version>0.1.17-SNAPSHOT</version>
+                <version>0.1.18</version>
                 <configuration>
                     <resourcesList>
                         <item>.*\\.txt$</item>
                     </resourcesList>
-                    <!-- Uncomment to run on iOS: -->
-                    <verbose>false</verbose>
+                    <verbose>true</verbose>
                     <target>android</target>
                     <mainClass>example.Example</mainClass>
                 </configuration>
             </plugin>
         </plugins>
     </build>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>gluon-releases</id>
+            <url>http://nexus.gluonhq.com/nexus/content/repositories/releases/</url>
+        </pluginRepository>
+    </pluginRepositories>
+
 
 </project>
