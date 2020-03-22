@@ -34,14 +34,17 @@ public class Example {
         graphhopper.setEncodingManager(EncodingManager.create(new CarFlagEncoder())).
                 importOrLoad();
 
-        GHResponse res = graphhopper.route(new GHRequest(new GHPoint(lat1, lon1), new GHPoint(lat2, lon2)));
+        GHRequest req = new GHRequest(new GHPoint(lat1, lon1), new GHPoint(lat2, lon2));
+        GHResponse res = graphhopper.route(req);
         PathWrapper pw = res.getBest();
         if (pw.hasErrors()) {
-            System.out.println("route has errors " + pw.getErrors());
+            System.out.println("route for " + req + " has errors " + pw.getErrors());
         } else {
-            System.out.println("distance: " + pw.getDistance());
+            System.out.println("distance: " + pw.getDistance() + " for " + req);
         }
 
         System.out.println("time since main method started: " + sw.stop().getSeconds());
+        // can we use this hack to return the distance?
+        // System.exit((int) pw.getDistance());
     }
 }
