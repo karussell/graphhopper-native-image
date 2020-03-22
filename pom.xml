@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.graphhopper.ni</groupId>
-    <artifactId>myniexample</artifactId>
+    <artifactId>graphhoppernative</artifactId>
     <version>1.0-SNAPSHOT</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -85,12 +85,11 @@
             </plugin>
         </plugins>
     </build>
+    <!-- for client-maven-plugin -->
     <pluginRepositories>
         <pluginRepository>
             <id>gluon-releases</id>
             <url>http://nexus.gluonhq.com/nexus/content/repositories/releases/</url>
         </pluginRepository>
     </pluginRepositories>
-
-
 </project>
