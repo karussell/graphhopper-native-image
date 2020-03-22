@@ -17,16 +17,21 @@ public class Example {
         }
 
         StopWatch sw = new StopWatch().start();
-
         double lat1 = 52.5169, lon1 = 13.3884, lat2 = 52.5147, lon2 = 13.3883;
         GraphHopperOSM graphhopper = new GraphHopperOSM();
-        if (args.length == 0)
+        if (args.length == 0) {
             // assume desktop that creates the graph files
             graphhopper.setOSMFile("osm.pbf").setGraphHopperLocation("graph-cache");
-        else
-            graphhopper.setGraphHopperLocation(args[1]).setAllowWrites(false);
+        } else {
+            lat1 = Double.parseDouble(args[2]);
+            lon1 = Double.parseDouble(args[3]);
+            lat2 = Double.parseDouble(args[4]);
+            lon2 = Double.parseDouble(args[5]);
+            // assume mobile that just reads the graph files
+            graphhopper.setMemoryMapped().setGraphHopperLocation(args[1]).setAllowWrites(false);
+        }
 
-        graphhopper.setMemoryMapped().setEncodingManager(EncodingManager.create(new CarFlagEncoder())).
+        graphhopper.setEncodingManager(EncodingManager.create(new CarFlagEncoder())).
                 importOrLoad();
 
         GHResponse res = graphhopper.route(new GHRequest(new GHPoint(lat1, lon1), new GHPoint(lat2, lon2)));
