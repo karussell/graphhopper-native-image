@@ -14,7 +14,7 @@
         <dependency>
             <groupId>com.graphhopper</groupId>
             <artifactId>graphhopper-reader-osm</artifactId>
-            <version>1.0-pre20</version>
+            <version>1.0-pre31</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.apache.xmlgraphics</groupId>
@@ -86,7 +86,7 @@
                     <skip>false</skip>
                     <imageName>graphhopper</imageName>
                     <buildArgs>
-                        --no-fallback -H:ConfigurationFileDirectories=${project.basedir}/ni-configs
+                        --no-fallback -H:ConfigurationFileDirectories=${project.basedir}/../ni-configs
                     </buildArgs>
                 </configuration>
             </plugin>

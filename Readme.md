@@ -14,7 +14,9 @@ It runs on Android and iOS, i.e. it calculates the routes on the device without 
  
 And this repository is about the GraalVM option. Or at least to get a native library working for now on currently supported platforms like Linux.
 
-# Create Native Image for GraphHopper
+# Web
+
+## Create Native Image for GraphHopper Web
 
  * [download graalvm](https://github.com/graalvm/graalvm-ce-builds/releases/)
    for your OS e.g graal CE for linux amd64, 19.3.0 and extract to `graalvm/`
@@ -22,14 +24,16 @@ And this repository is about the GraalVM option. Or at least to get a native lib
  * The native-image tool needs a local C toolchain: glibc-devel, zlib-devel and gcc - do e.g.`sudo apt-get install zlib1g-dev`
  * verify that the tool works: `$JAVA_HOME/bin/native-image --help`
  * set JAVA_HOME to the downloaded graal (`graalvm/`) to use the correct JVM for maven
+ * `cd web`
  * `mvn clean package` => should create a native image at ./target/graphhopper
 
-# Start the GraphHopper Native Image
+## Start the GraphHopper Web Native Image
 
 Now that graal created your native image you can start graphhopper:
 
+ * `cd web`
  * download OSM road data: `wget http://download.geofabrik.de/europe/germany/berlin-latest.osm.pbf -O osm.pbf`
- * start GraphHopper: `./target/graphhopper`
+ * start GraphHopper: `./target/graphhopper`, see example.cpp and src/main/java/example/Example.java for the code that will be executed
 
 It will take a few seconds where it basically converts the pbf
 file into an internal graph structure (see graph-cache folder), but all subsequent
@@ -40,7 +44,7 @@ If you are finished and you noticed something is eating your CPU resources do:
 
 `$JAVA_HOME/bin/native-image --server-shutdown`
 
-# Unscientific Results
+## Unscientific Results
 
 Measured via command line utility `time` and picked the "real" time
 
@@ -48,13 +52,13 @@ Measured via command line utility `time` and picked the "real" time
  * native image: <0.05s
  * shared library: ~0.025s
  
-# Future Tasks
+## Future Tasks
 
  * target iOS, see target=iOS here: https://github.com/gluonhq/client-samples and https://github.com/gluonhq/substrate/issues/47
  * target Android, see https://github.com/gluonhq/client-samples/issues/35
  * we could try to start the dropwizard web service as native image and compare e.g. performance
  
-# How to make resources of dependencies working?
+## How to make resources of dependencies working?
 
 Run application with GraalVM and special agent:
 
@@ -70,14 +74,14 @@ https://github.com/oracle/graal/blob/master/substratevm/CONFIGURE.md
 
 https://github.com/oracle/graal/blob/master/substratevm/RESOURCES.md
 
-# Open Questions
+## Open Questions
 
  * slf4j-log4j bridge fails with ClassNotFound. Workaround: use slf4j-simple. Likely this is fixed via the resources config in previous section or maybe
    [this](https://github.com/oracle/graal/issues/653)
  * Why are they e.g. libgraphhopper_dynamic.h headers and how can I use 
    `--static` as then no headers are created?
 
-# Call GraphHopper from C++
+## Call GraphHopper from C++
 
 Instead of a native application we now want a library that is called from
 native code like example.cpp. To create this library do the following:
