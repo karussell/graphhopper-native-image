@@ -1,4 +1,4 @@
-myniexample.iml
+*.iml
 target/
 .idea/
 graph-cache/

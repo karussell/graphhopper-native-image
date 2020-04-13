@@ -2,7 +2,6 @@ package example;
 
 import com.graphhopper.GHRequest;
 import com.graphhopper.GHResponse;
-import com.graphhopper.GraphHopper;
 import com.graphhopper.PathWrapper;
 import com.graphhopper.reader.osm.GraphHopperOSM;
 import com.graphhopper.routing.util.CarFlagEncoder;
@@ -20,7 +19,7 @@ public class Example {
         for (int i = 0; i < args.length; i++) {
             System.err.println("args[" + i + "]: " + args[i]);
         }
-        
+
         StopWatch sw = new StopWatch().start();
         double lat1 = 52.5169, lon1 = 13.3884, lat2 = 52.5147, lon2 = 13.3883;
         GraphHopperOSM graphhopper = new GraphHopperOSM();
@@ -35,9 +34,9 @@ public class Example {
             // assume mobile that just reads the graph files
             graphhopper.setMemoryMapped().setGraphHopperLocation(args[1]).setAllowWrites(false);
         }
-        graphhopper.setEncodingManager(EncodingManager.create(new CarFlagEncoder())).        
+        graphhopper.setEncodingManager(EncodingManager.create(new CarFlagEncoder())).
                 importOrLoad();
-                
+
         GHRequest req = new GHRequest(new GHPoint(lat1, lon1), new GHPoint(lat2, lon2));
         GHResponse res = graphhopper.route(req);
         PathWrapper pw = res.getBest();
@@ -47,7 +46,7 @@ public class Example {
             System.out.println("distance: " + pw.getDistance() + " for " + req);
             System.out.println(WebHelper.jsonObject(res, true, true, false, true, sw.getSeconds()).toString());
         }
-        
+
         System.out.println("time since main method started: " + sw.stop().getSeconds());
         // can we use this hack to return the distance?
         // System.exit((int) pw.getDistance());
