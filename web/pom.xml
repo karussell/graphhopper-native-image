@@ -86,7 +86,7 @@
                     <skip>false</skip>
                     <imageName>graphhopper</imageName>
                     <buildArgs>
-                        --no-fallback -H:ConfigurationFileDirectories=${project.basedir}/../ni-configs
+                        --no-fallback -H:ConfigurationFileDirectories=${project.basedir}/ni-configs
                     </buildArgs>
                 </configuration>
             </plugin>
