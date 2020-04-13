@@ -1,18 +1,19 @@
 # Description
 
-[GraphHopper](https://github.com/graphhopper/graphhopper) is a fast and memory efficient Java routing engine, released under Apache License 2.0. By default it uses OpenStreetMap and GTFS data, but it can import other data sources.
+[GraphHopper](https://github.com/graphhopper/graphhopper) is a fast and memory efficient Java routing engine, released under Apache License 2.0.
 
-It runs on Android and iOS, i.e. it calculates the routes on the device without internet access. But there are a couple of problems with each approach:
+It runs on Android and iOS, i.e. it calculates the routes on the device without internet access.
+There are a couple of problems with each approach:
 
  * GraphHopper [mostly already works on Android](https://github.com/graphhopper/graphhopper/tree/master/android) but Android does not support the latest Java. Even Java 8 is not really well supported. This forces us to stay on old dependencies for our `core` module and also on Java7 features. Android additionally limits the area one process can mmap. This is ugly because it is an arbitrary limit at ~1.5GB hardcoded in the sources although the devices usually have more and there is no such limit for native applications.
  * There is an [iOS port](https://github.com/graphhopper/graphhopper-ios/) using j2objc, but maintaining this port is not trivial. And so this port is not up-to-date.
 
-# Solutions
+There are a couple of solutions described in [this issue](https://github.com/graphhopper/graphhopper/issues/1940).
+And this repository is about the GraalVM option: get a native library working on
+Android, see the "mobile native" section.
 
- * Rewrite in Kotlin that can target iOS and Android and even JavaScript. But this is a huge work and on Android one needs an additional Kotlin dependency.
- * GraalVM looks promising and could help us to develop a native library that could be included on iOS and Android. 
- 
-And this repository is about the GraalVM option. Or at least to get a native library working for now on currently supported platforms like Linux.
+As a side effect of this experiment we can easily create a native image with 
+nearly no startup overhead, see the "web native" section.
 
 # Mobile Native
 
