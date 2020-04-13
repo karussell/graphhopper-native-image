@@ -11,8 +11,10 @@ import com.graphhopper.util.StopWatch;
 import com.graphhopper.util.shapes.GHPoint;
 import org.graalvm.nativeimage.IsolateThread;
 import org.graalvm.nativeimage.c.function.CEntryPoint;
+import com.graphhopper.http.WebHelper;
 
 public class Example {
+
     public static void main(String[] args) {
         System.out.println("GraphHopper got " + args.length + " args.");
         for (int i = 0; i < args.length; i++) {
@@ -43,6 +45,7 @@ public class Example {
             System.out.println("route for " + req + " has errors " + pw.getErrors());
         } else {
             System.out.println("distance: " + pw.getDistance() + " for " + req);
+            System.out.println(WebHelper.jsonObject(res, true, true, false, true, sw.getSeconds()).toString());
         }
         
         System.out.println("time since main method started: " + sw.stop().getSeconds());
