@@ -14,6 +14,31 @@ It runs on Android and iOS, i.e. it calculates the routes on the device without 
  
 And this repository is about the GraalVM option. Or at least to get a native library working for now on currently supported platforms like Linux.
 
+# Android
+
+## Build Android
+
+```bash
+# get latest graalvm from gluon https://github.com/gluonhq/client-samples/#linux-and-android
+wget https://download2.gluonhq.com/substrate/graalvm/graalvm-svm-linux-20.1.0-ea+26.zip
+# unzip this and let GRAALVM_HOME point to it
+export GRAALVM_HOME=$BASE/graalvm-svm-linux-20.1-latest
+
+# get Android SDK: https://developer.android.com/studio/#downloads
+export ANDROID_SDK=$BASE/android-sdk-linux
+
+# get Android NDK: https://developer.android.com/ndk/
+export ANDROID_NDK=$BASE/android-sdk-linux/ndk/20.1.5948944/
+
+cd android
+mvn client:compile
+mvn client:link
+```
+
+Then copy the produced `android/target/client/aarch64-android/libgraphhoppernative.so` into
+`distribution/ghlib/arm64-v8a/` of the repository https://github.com/karussell/native-hello-world-app
+and start building your Android app
+
 # Web
 
 ## Create Native Image for GraphHopper Web
