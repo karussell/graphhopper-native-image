@@ -14,9 +14,9 @@ It runs on Android and iOS, i.e. it calculates the routes on the device without 
  
 And this repository is about the GraalVM option. Or at least to get a native library working for now on currently supported platforms like Linux.
 
-# Android
+# Mobile Native
 
-## Build Android
+## Build Android Library
 
 ```bash
 # get latest graalvm from gluon https://github.com/gluonhq/client-samples/#linux-and-android
@@ -39,9 +39,9 @@ Then copy the produced `android/target/client/aarch64-android/libgraphhoppernati
 `distribution/ghlib/arm64-v8a/` of the repository https://github.com/karussell/native-hello-world-app
 and start building your Android app
 
-# Web
+# Web Native
 
-## Create Native Image for GraphHopper Web
+## Build Linux Executable
 
  * [download graalvm](https://github.com/graalvm/graalvm-ce-builds/releases/)
    for your OS e.g graal CE for linux amd64, 19.3.0 and extract to `graalvm/`
@@ -52,9 +52,9 @@ and start building your Android app
  * `cd web`
  * `mvn clean package` => should create a native image at ./target/graphhopper
 
-## Start the GraphHopper Web Native Image
+## Start Executable
 
-Now that graal created your native image you can start graphhopper:
+Now that GraalVM created your native image you can start graphhopper:
 
  * `cd web`
  * download OSM road data: `wget http://download.geofabrik.de/europe/germany/berlin-latest.osm.pbf -O osm.pbf`
