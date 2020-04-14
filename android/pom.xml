@@ -25,6 +25,16 @@
                     <groupId>org.apache.xmlgraphics</groupId>
                     <artifactId>xmlgraphics-commons</artifactId>
                 </exclusion>
+                <!-- we should be able to exclude this when using the 'allow-incomplete-classpath' option
+                <exclusion>
+                    <groupId>com.google.protobuf</groupId>
+                    <artifactId>protobuf-java</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.openstreetmap.osmosis</groupId>
+                    <artifactId>osmosis-osm-binary</artifactId>
+                </exclusion>
+                -->
             </exclusions>
         </dependency>
         <dependency>
