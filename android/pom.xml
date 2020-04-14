@@ -32,12 +32,6 @@
             <artifactId>slf4j-simple</artifactId>
             <version>1.7.26</version>
         </dependency>
-        <dependency>
-            <groupId>org.graalvm.nativeimage</groupId>
-            <artifactId>library-support</artifactId>
-            <scope>provided</scope>
-            <version>20.0.0</version>
-        </dependency>
     </dependencies>
 
     <build>
