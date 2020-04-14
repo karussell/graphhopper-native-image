@@ -13,6 +13,11 @@
     <dependencies>
         <dependency>
             <groupId>com.graphhopper</groupId>
+            <artifactId>graphhopper-web-api</artifactId>
+            <version>1.0-pre31</version>
+        </dependency>
+        <dependency>
+            <groupId>com.graphhopper</groupId>
             <artifactId>graphhopper-reader-osm</artifactId>
             <version>1.0-pre31</version>
             <exclusions>
