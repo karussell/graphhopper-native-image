@@ -5,6 +5,7 @@ import com.graphhopper.GHRequest;
 import com.graphhopper.GHResponse;
 import com.graphhopper.PathWrapper;
 import com.graphhopper.http.WebHelper;
+import com.graphhopper.jackson.Jackson;
 import com.graphhopper.reader.osm.GraphHopperOSM;
 import com.graphhopper.routing.util.CarFlagEncoder;
 import com.graphhopper.routing.util.EncodingManager;
@@ -53,7 +54,7 @@ public class Example {
         } else {
             System.out.println("distance: " + pw.getDistance() + " for " + req);
             try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(exchangeFile), StandardCharsets.UTF_8))) {
-                ObjectMapper om = new ObjectMapper();
+                ObjectMapper om = Jackson.newObjectMapper();
                 String str = om.writeValueAsString(WebHelper.jsonObject(res, true, true, false, true, sw.getSeconds()));
                 writer.write(str);
             } catch (Exception e) {
